@@ -1,9 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client"
 
-let header = React.createElement("div", { id: "parent" }, [React.createElement("div", { id: "child1", key: "child1" }, [React.createElement("span", { style: { fontWeight: 500 }, id: "heading1", key: 'span1' }, "Hello World from ReactJS!!"), React.createElement("h2", { id: "heading1", key: 'h2_1' }, "I am h2 tag")]), React.createElement("div", { id: "child2", key: "child2" }, [React.createElement("span", { style: { fontWeight: 500 }, id: "heading2", key: 'span2' }, "Hello World from ReactJS!!"), React.createElement("h2", { id: "heading2", key: 'h2_2' }, "I am h2 tag")])]);
-
-// console.log(header); //object
+let ReactComponent = () => <h2 className="heading3">I am a React Component!</h2>
+let JsxHeading = () => 
+<>
+<h1 className="heading1">Namaste React using JSX!</h1>
+<ReactComponent />
+<h3 className="heading2">React Is Super Cool!</h3>
+</>;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(header);
+root.render(<JsxHeading />);

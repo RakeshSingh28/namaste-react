@@ -1,7 +1,11 @@
-#heading1 {
+.heading1 {
     color: red;
 }
 
-#heading2 {
+.heading2 {
     color: green;
+}
+
+.heading3 {
+    color: rgb(255, 238, 0);
 }
