@@ -1,11 +1,90 @@
-.heading1 {
-    color: red;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  height: 80px;
+  margin-bottom: 4px;
 }
 
-.heading2 {
-    color: green;
+.imageContainer {
+  margin-top: 8px;
 }
 
-.heading3 {
-    color: rgb(255, 238, 0);
+.logo {
+  height: 80px;
+  border-radius: 10px;
+}
+
+.navItems > ul {
+  font-size: 20px !important;
+  display: flex;
+  list-style-type: none;
+}
+
+.navItems > ul > li {
+  margin: 10px;
+  padding: 10px;
+  padding-left: 0px;
+}
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search {
+  margin-bottom: 4px;
+}
+
+.search > input {
+  width: 200px;
+}
+
+.search-btn {
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.res-card {
+  width: 250px;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 4px;
+  background-color: rgb(239, 238, 238);
+}
+
+.res-card:hover {
+  cursor: pointer;
+  border: 0px solid gray;
+  background-color: lightgray;
+  box-shadow: 5px 5px 1px 1px rgb(202, 201, 201);
+}
+
+.res-logo {
+  height: 150px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+h3,
+h4,
+h5 {
+  margin-top: 0px !important;
+  margin-bottom: 8px;
+}
+
+.ratingEta {
+  display: flex;
+  align-items: baseline;
+}
+
+.slaCss {
+  padding-left: 28px;
+}
+
+.filter-btn {
+  margin-top: 5px;
+  cursor: pointer;
 }
