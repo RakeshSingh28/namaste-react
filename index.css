@@ -21,6 +21,7 @@
   font-size: 20px !important;
   display: flex;
   list-style-type: none;
+  align-items: center;
 }
 
 .navItems > ul > li {
@@ -35,7 +36,8 @@
 }
 
 .search {
-  margin-bottom: 4px;
+  margin: 8px 0px;
+  display: flex;
 }
 
 .search > input {
@@ -44,7 +46,7 @@
 
 .search-btn {
   cursor: pointer;
-  margin-left: 4px;
+  margin: 0px 4px;
 }
 
 .res-card {
@@ -52,14 +54,14 @@
   border-radius: 10px;
   padding: 4px;
   margin: 4px;
-  background-color: rgb(239, 238, 238);
+  background-color: rgb(255, 255, 255);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .res-card:hover {
   cursor: pointer;
-  border: 0px solid gray;
-  background-color: lightgray;
-  box-shadow: 5px 5px 1px 1px rgb(202, 201, 201);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2), 0 8px 8px rgba(0, 0, 0, 0.12);
 }
 
 .res-logo {
@@ -68,11 +70,18 @@
   width: 100%;
 }
 
-h3,
+h2,
 h4,
 h5 {
   margin-top: 0px !important;
   margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-info {
+  padding: 8px;
 }
 
 .ratingEta {
@@ -85,6 +94,54 @@ h5 {
 }
 
 .filter-btn {
-  margin-top: 5px;
   cursor: pointer;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  margin: 10px;
+  height: 370px;
+  width: 245px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+
+.search-shimmer {
+  margin: 10px;
+  height: 20px;
+  width: 400px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.btnLoginLogout {
+  height: 40px;
+  width: 100px;
+  margin: 0 20px 0 0;
+  cursor: pointer;
+}
+
+.empty-container {
+  display: grid;
+  justify-content: center;
+  color: #282c3f;
+  font-weight: 600;
+}
+
+.empty-container span {
+  display: flex;
+  justify-content: center;
+}
+
+.res-info-design {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
