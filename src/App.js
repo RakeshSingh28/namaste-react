@@ -10,7 +10,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const AppContainer = () => {
   return (
-    <div className="container">
+    <div>
       <Header />
       <Outlet />
     </div>
@@ -19,11 +19,11 @@ const AppContainer = () => {
 
 const appRouter = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <AppContainer />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Body />,
       },
       {

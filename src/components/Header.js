@@ -8,19 +8,39 @@ const Header = () => {
   return (
     <div className="header">
       <div className="imageContainer">
-        <Link to='/'><img className="logo" src={APP_LOGO_URL} /></Link>
+        <Link to="">
+          <img className="logo" src={APP_LOGO_URL} />
+        </Link>
       </div>
 
       <div className="navItems">
         <ul>
           <li>
-            <Link to="/about" style={{ textDecoration: 'none', color: 'inherit' }}>About Us</Link>
+            <Link
+              to="/about"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>Contact Us</Link>
+            <Link
+              to="/contact"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Contact Us
+            </Link>
           </li>
-          <li style={{paddingTop: '20px'}}>
-            <Link to="/cart" style={{ textDecoration: 'none', color: 'inherit' }}><img style={{height: '60px', width: '40px', display: 'flex'}} src="https://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg" /></Link>
+          <li style={{ paddingTop: "20px" }}>
+            <Link
+              to="/cart"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <img
+                style={{ height: "60px", width: "40px", display: "flex" }}
+                src="https://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg"
+              />
+            </Link>
           </li>
           <button
             className="btnLoginLogout"

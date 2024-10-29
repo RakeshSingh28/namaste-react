@@ -7,6 +7,7 @@ const Body = () => {
   const [restaurantData, changeRestaurantData] = useState([]);
   const [resData, changeState] = useState([]);
   const [searchVal, changeSearchVal] = useState("");
+  const [searchedValue, setSearchedValue] = useState("");
   const [dataLoading, setDataLoading] = useState(false);
 
   useEffect(() => {
@@ -66,15 +67,32 @@ const Body = () => {
             placeholder="Search By Restaurant..."
             aria-label="Search"
             value={searchVal}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                setSearchedValue(searchVal);
+                if (searchVal) {
+                  const filteredRestaurants = restaurantData.filter(
+                    (restaurant) =>
+                      restaurant.info.name
+                        .toLowerCase()
+                        .includes(searchVal.toLowerCase())
+                  );
+                  changeState(filteredRestaurants);
+                } else changeState(restaurantData);
+              }
+            }}
             onChange={(e) => {
               changeSearchVal(e.target.value);
               if (e.target.value === "") changeState(restaurantData);
             }}
           />
           <button
-            type="submit"
+            type="button"
             className="search-btn"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              setSearchedValue(searchVal);
               if (searchVal) {
                 const filteredRestaurants = restaurantData.filter(
                   (restaurant) =>
@@ -91,7 +109,7 @@ const Body = () => {
         </form>
         <div className="empty-container">
           <img src="https://t4.ftcdn.net/jpg/05/86/20/99/360_F_586209953_qUnJcI6blRTETJ5Dgo5K7Y5P1fJO7ItH.jpg"></img>
-          <span>No match found for - {searchVal}</span>
+          <span>No match found for - {searchedValue}</span>
         </div>
       </div>
     );
@@ -106,15 +124,32 @@ const Body = () => {
           placeholder="Search By Restaurant..."
           aria-label="Search"
           value={searchVal}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              setSearchedValue(searchVal);
+              if (searchVal) {
+                const filteredRestaurants = restaurantData.filter(
+                  (restaurant) =>
+                    restaurant.info.name
+                      .toLowerCase()
+                      .includes(searchVal.toLowerCase())
+                );
+                changeState(filteredRestaurants);
+              } else changeState(restaurantData);
+            }
+          }}
           onChange={(e) => {
             changeSearchVal(e.target.value);
             if (e.target.value === "") changeState(restaurantData);
           }}
         />
         <button
-          type="submit"
+          type="button"
           className="search-btn"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
+            setSearchedValue(searchVal);
             if (searchVal) {
               const filteredRestaurants = restaurantData.filter((restaurant) =>
                 restaurant.info.name
@@ -129,9 +164,14 @@ const Body = () => {
         </button>
         <button
           className="filter-btn"
-          onClick={() => {
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            changeSearchVal("");
             changeState(
-              resData.filter((restaurant) => restaurant.info.avgRating >= 4.5)
+              restaurantData.filter(
+                (restaurant) => restaurant.info.avgRating >= 4.5
+              )
             );
           }}
         >
