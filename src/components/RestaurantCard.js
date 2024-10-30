@@ -8,24 +8,37 @@ const RestaurantCard = ({ resData }) => {
     avgRating,
     sla,
     cloudinaryImageId,
-    costForTwo,
     areaName,
+    aggregatedDiscountInfoV3,
   } = resData?.info;
   return (
     <div className="res-card">
-      <img className="res-logo" src={CDN_URL + cloudinaryImageId} />
+      <div className="res-img-card">
+        {aggregatedDiscountInfoV3?.header && (
+          <h5 className="discount-header">
+            {aggregatedDiscountInfoV3.header +
+              " " +
+              aggregatedDiscountInfoV3.subHeader}
+          </h5>
+        )}
+        <img
+          className="res-logo"
+          src={CDN_URL + cloudinaryImageId}
+          alt="Restaurant Logo"
+        />
+      </div>
       <div className="card-info">
         <h2>{name}</h2>
         <h4>{cuisines.join(", ")}</h4>
         <div className="ratingEta">
           {avgRating && (
             <>
-              <h5>
+              <h5 style={{ display: "flex", alignItems: "center" }}>
                 <img
                   style={{ height: "20px", width: "20px", marginRight: "8px" }}
                   src={RATING_ICON_URL}
                 ></img>{" "}
-                {avgRating}
+                <div>{avgRating}</div>
               </h5>
               <h5>
                 <ul className="slaCss">
@@ -36,7 +49,6 @@ const RestaurantCard = ({ resData }) => {
           )}
           {!avgRating && <h5>{sla.slaString}</h5>}
         </div>
-        <h5>{costForTwo}</h5>
         <h5>{areaName}</h5>
       </div>
     </div>

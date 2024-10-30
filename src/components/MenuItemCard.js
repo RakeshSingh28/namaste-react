@@ -17,9 +17,12 @@ class MenuItemCard extends Component {
           <h3>{name}</h3>
           <b>₹ {price}</b>
           {rating?.rating && (
-            <h5 style={{display: 'flex'}}>
-              <img style={{height: '20px', width: '20px', marginRight: '8px'}} src={RATING_ICON_URL}></img> {rating.rating} (
-              {rating.ratingCountV2})
+            <h5 style={{ display: "flex" }}>
+              <img
+                style={{ height: "20px", width: "20px", marginRight: "8px" }}
+                src={RATING_ICON_URL}
+              />
+              {rating.rating} ({rating.ratingCountV2})
             </h5>
           )}
           <div>{description}</div>
@@ -57,10 +60,10 @@ class MenuItemCard extends Component {
             </button>
           )}
         </div>
-        <img
+        { img && <img
           className="item-img"
           src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${img}`}
-        />
+        />}
       </div>
     );
   }

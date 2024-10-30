@@ -109,7 +109,7 @@ h5 {
 
 .ratingEta {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .slaCss {
@@ -161,6 +161,18 @@ h5 {
   width: 100px;
   margin: 0 20px 0 0;
   cursor: pointer;
+  background-color: #fff;
+  color: gray;
+  font-size: 1rem;
+  border: 1px solid gray;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btnLoginLogout:hover {
+  background-color: #fff;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
 }
 
 .empty-container {
@@ -187,4 +199,18 @@ h5 {
 
 .body {
   margin-top: 90px;
+}
+
+.res-img-card {
+  position: relative;
+}
+
+.discount-header {
+  color: #fff;
+  background-color: #00000099;
+  border-radius: 5px;
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
 }

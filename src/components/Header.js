@@ -34,7 +34,6 @@ const Header = () => {
           <li style={{ paddingTop: "20px" }}>
             <Link
               to="/cart"
-              style={{ textDecoration: "none", color: "inherit" }}
             >
               <img
                 style={{ height: "60px", width: "40px", display: "flex" }}

@@ -39,7 +39,9 @@ const RestaurantMenu = () => {
     resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
       ?.itemCards ||
     resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card
-      ?.itemCards;
+      ?.itemCards ||
+      resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[10]?.card?.card
+        ?.itemCards;
 
   return (
     <div className="menu card-info">
