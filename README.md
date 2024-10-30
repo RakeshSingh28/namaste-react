@@ -10,7 +10,7 @@
 - Caching - Faster builds
 - Image Optimization
 - Minify and Optimise our file
-- Bundle our file
+- Bundle our file - Bundlers combine JavaScript code, assets, and other code into a single file.
 - Compress our file
 - Consistent Hashing
 - Code Splitting

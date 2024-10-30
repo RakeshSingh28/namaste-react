@@ -1,5 +1,5 @@
 import { CDN_URL } from "../utils/constants";
-import { RATING_ICON_URL } from "../utils/constants";
+import { RATING_ICON_URL, AVG_RATING_ICON_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
   const {
@@ -35,8 +35,13 @@ const RestaurantCard = ({ resData }) => {
             <>
               <h5 style={{ display: "flex", alignItems: "center" }}>
                 <img
-                  style={{ height: "20px", width: "20px", marginRight: "8px" }}
-                  src={RATING_ICON_URL}
+                  style={{
+                    height: "20px",
+                    width: "20px",
+                    marginRight: "8px",
+                    borderRadius: "50%",
+                  }}
+                  src={avgRating >= 3 ? RATING_ICON_URL : AVG_RATING_ICON_URL}
                 ></img>{" "}
                 <div>{avgRating}</div>
               </h5>

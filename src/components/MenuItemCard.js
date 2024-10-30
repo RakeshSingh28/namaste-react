@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { RATING_ICON_URL } from "../utils/constants";
+import { RATING_ICON_URL, AVG_RATING_ICON_URL } from "../utils/constants";
 import "./MenuItemCard.css";
 
 class MenuItemCard extends Component {
@@ -19,8 +19,15 @@ class MenuItemCard extends Component {
           {rating?.rating && (
             <h5 style={{ display: "flex" }}>
               <img
-                style={{ height: "20px", width: "20px", marginRight: "8px" }}
-                src={RATING_ICON_URL}
+                style={{
+                  height: "20px",
+                  width: "20px",
+                  marginRight: "8px",
+                  borderRadius: "50%",
+                }}
+                src={
+                  rating?.rating >= 3 ? RATING_ICON_URL : AVG_RATING_ICON_URL
+                }
               />
               {rating.rating} ({rating.ratingCountV2})
             </h5>
@@ -38,32 +45,34 @@ class MenuItemCard extends Component {
           )}
           {this.state.count > 0 && (
             <button className="add-btn">
-              <button
+              <div
                 className="sub-btn"
                 onClick={() => {
                   this.setState({ count: this.state.count - 1 });
                 }}
               >
                 <b> – </b>
-              </button>
+              </div>
               {this.state.count > 0 && (
                 <b style={{ margin: "0px 24px" }}>{this.state.count}</b>
               )}
-              <button
+              <div
                 className="more-btn"
                 onClick={() => {
                   this.setState({ count: this.state.count + 1 });
                 }}
               >
                 <b> + </b>
-              </button>
+              </div>
             </button>
           )}
         </div>
-        { img && <img
-          className="item-img"
-          src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${img}`}
-        />}
+        {img && (
+          <img
+            className="item-img"
+            src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${img}`}
+          />
+        )}
       </div>
     );
   }

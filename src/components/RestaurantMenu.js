@@ -1,25 +1,16 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CDN_URL, RATING_ICON_URL, RESTAURANT_MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import {
+  CDN_URL,
+  RATING_ICON_URL,
+  AVG_RATING_ICON_URL,
+} from "../utils/constants";
 import Shimmer from "./Shimmer";
 import MenuItemCard from "./MenuItemCard";
 
 const RestaurantMenu = () => {
-  const [resMenu, setResMenu] = useState(null);
   const { id } = useParams();
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      RESTAURANT_MENU_API + id + "&catalog_qa=undefined&submitAction=ENTER"
-    );
-
-    const jsonData = await data.json();
-    setResMenu(jsonData?.data);
-  };
+  const resMenu = useRestaurantMenu(id);
 
   if (resMenu?.cards === null || resMenu?.cards === undefined)
     return <Shimmer />;
@@ -40,8 +31,8 @@ const RestaurantMenu = () => {
       ?.itemCards ||
     resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card
       ?.itemCards ||
-      resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[10]?.card?.card
-        ?.itemCards;
+    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[10]?.card?.card
+      ?.itemCards;
 
   return (
     <div className="menu card-info">
@@ -51,8 +42,17 @@ const RestaurantMenu = () => {
           <div className="ratingEta">
             {avgRating && (
               <>
-                <h4 style={{display: 'flex'}}>
-                  <img style={{height: '20px', width: '20px', marginRight: '8px'}} src={RATING_ICON_URL}></img> {avgRating} (
+                <h4 style={{ display: "flex" }}>
+                  <img
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      marginRight: "8px",
+                      borderRadius: "50%",
+                    }}
+                    src={avgRating >= 3 ? RATING_ICON_URL : AVG_RATING_ICON_URL}
+                  ></img>{" "}
+                  {avgRating} (
                   {Math.floor(totalRatings / 1000) === 0
                     ? totalRatings
                     : `${Math.floor(totalRatings / 1000)}K+`}{" "}

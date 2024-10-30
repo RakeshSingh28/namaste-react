@@ -1,8 +1,9 @@
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import About from "./components/About";
-import Contact from "./components/Contact";
+// import About from "./components/About";
+// import Contact from "./components/Contact";
+import { lazy, Suspense } from "react";
 import Cart from "./components/Cart";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
@@ -16,7 +17,8 @@ const AppContainer = () => {
     </div>
   );
 };
-
+const About = lazy(() => import("./components/About"));
+const Contact = lazy(() => import("./components/Contact"));
 const appRouter = createBrowserRouter([
   {
     path: "",
@@ -28,11 +30,19 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { APP_LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useInternetStatus from "../utils/useInternetStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+
+  const internetStatus = useInternetStatus();
 
   return (
     <div className="header">
@@ -15,6 +18,7 @@ const Header = () => {
 
       <div className="navItems">
         <ul>
+          <li>Online Status: {internetStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link
               to="/about"
@@ -32,9 +36,7 @@ const Header = () => {
             </Link>
           </li>
           <li style={{ paddingTop: "20px" }}>
-            <Link
-              to="/cart"
-            >
+            <Link to="/cart">
               <img
                 style={{ height: "60px", width: "40px", display: "flex" }}
                 src="https://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg"
