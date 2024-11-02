@@ -15,7 +15,7 @@ class MenuItemCard extends Component {
       <div className="item-card">
         <div className="item-detail">
           <h3>{name}</h3>
-          <b>₹ {price}</b>
+          <b className="mb-2">₹ {price}</b>
           {rating?.rating && (
             <h5 style={{ display: "flex" }}>
               <img
@@ -32,7 +32,7 @@ class MenuItemCard extends Component {
               {rating.rating} ({rating.ratingCountV2})
             </h5>
           )}
-          <div>{description}</div>
+          <div className="mb-2">{description}</div>
           {this.state.count == 0 && (
             <button
               className="add-btn"

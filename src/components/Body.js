@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { RestaurantCardPromoted } from "./RestaurantCard";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
@@ -8,8 +8,9 @@ import useInternetStatus from "../utils/useInternetStatus";
 const Body = () => {
   const [searchVal, changeSearchVal] = useState("");
   const [searchedValue, setSearchedValue] = useState("");
-  const [restaurantData, resData, changeState,  dataLoading] = useBody();
+  const [restaurantData, resData, changeState, dataLoading] = useBody();
   const internetStatus = useInternetStatus();
+  const RestaurantCardWithLabel = RestaurantCardPromoted(RestaurantCard);
 
   if (!internetStatus)
     return (
@@ -151,13 +152,17 @@ const Body = () => {
         </button>
       </form>
       <div className="res-container">
-        {resData.map((restaurant) => (
+        {resData.map((restaurant, idx) => (
           <Link
             to={`/restaurant/${restaurant?.info?.id}`}
-            key={restaurant?.info?.id}
+            key={restaurant?.info?.id + idx}
             style={{ textDecoration: "none", color: "inherit" }}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant?.info?.promoted ? (
+              <RestaurantCardWithLabel resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

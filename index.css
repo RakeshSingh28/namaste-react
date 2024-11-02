@@ -12,15 +12,11 @@
   margin-bottom: 4px;
   position: fixed;
   top: 0;
-  left: 5;
-  width: 99%;
+  left: 1;
+  width: 100%;
   z-index: 1000;
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.imageContainer {
-  margin-top: 8px;
 }
 
 .logo {
@@ -47,12 +43,15 @@
 }
 
 .search {
-  margin: 8px 0px;
+  margin: 8px;
   display: flex;
 }
 
 .search > input {
   width: 200px;
+  border: 1px solid #ff4d4d;
+  border-radius: 6px;
+  padding: 4px;
 }
 
 .search-btn {
@@ -77,13 +76,13 @@
   border-radius: 10px;
   padding: 4px;
   margin: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(237, 235, 235);
   transition: box-shadow 0.3s ease-in-out;
 }
 
 .res-card:hover {
   cursor: pointer;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(237, 235, 235);
   box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2), 0 8px 8px rgba(0, 0, 0, 0.12);
 }
 
@@ -93,14 +92,19 @@
   width: 100%;
 }
 
+h1,
 h2,
+h3,
 h4,
-h5 {
-  margin-top: 0px !important;
+h5,
+h6 {
+  margin-top: 0px;
   margin-bottom: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: revert;
+  font-weight: 600;
 }
 
 .card-info {
@@ -117,7 +121,7 @@ h5 {
 }
 
 .slaCss {
-  padding-left: 28px;
+  padding-left: 24px;
 }
 
 .filter-btn {
@@ -184,7 +188,7 @@ h5 {
   justify-content: center;
   color: #282c3f;
   font-weight: 600;
-  margin-top: 90px;
+  margin-top: 90px !important;
 }
 
 .empty-container span {
@@ -212,9 +216,10 @@ h5 {
 .discount-header {
   color: #fff;
   background-color: #00000099;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 5px 10px;
   position: absolute;
-  bottom: 3px;
-  right: 3px;
+  bottom: 0px;
+  right: 0px;
+  margin-bottom: 0px;
 }

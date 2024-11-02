@@ -59,8 +59,8 @@ const RestaurantMenu = () => {
                   ratings)
                 </h4>
                 <h4>
-                  <ul className="slaCss">
-                    <li>{costForTwoMessage}</li>
+                  <ul className="slaCss ml-2">
+                    <li className="list-disc">{costForTwoMessage}</li>
                   </ul>
                 </h4>
               </>
@@ -80,12 +80,7 @@ const RestaurantMenu = () => {
           />
         </div>
       </div>
-      <h3
-        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-      >
-        {" "}
-        ~~~ MENU ~~~{" "}
-      </h3>
+      <h3 className="flex justify-center mt-5"> ~~~ MENU ~~~ </h3>
       <ul>
         {itemCards?.map((item) => (
           <MenuItemCard

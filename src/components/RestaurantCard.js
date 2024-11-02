@@ -28,8 +28,8 @@ const RestaurantCard = ({ resData }) => {
         />
       </div>
       <div className="card-info">
-        <h2>{name}</h2>
-        <h4>{cuisines.join(", ")}</h4>
+        <h3>{name}</h3>
+        <h5>{cuisines.join(", ")}</h5>
         <div className="ratingEta">
           {avgRating && (
             <>
@@ -47,7 +47,7 @@ const RestaurantCard = ({ resData }) => {
               </h5>
               <h5>
                 <ul className="slaCss">
-                  <li>{sla.slaString}</li>
+                  <li className="list-disc">{sla.slaString}</li>
                 </ul>
               </h5>
             </>
@@ -58,6 +58,19 @@ const RestaurantCard = ({ resData }) => {
       </div>
     </div>
   );
+};
+
+export const RestaurantCardPromoted = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white p-1 ml-2 mt-1 rounded-lg z-10">
+          Ad.
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
