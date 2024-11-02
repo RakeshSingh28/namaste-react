@@ -6,7 +6,7 @@
 - Dev Build
 - Hosting Dev Build to Local Server
 - HMR - Hot Module Replacement
-- File Watching Algorithm - written in C++
+- File Watching Algorithm - Written in C++
 - Caching - Faster builds
 - Image Optimization
 - Minify and Optimise our file
@@ -14,9 +14,9 @@
 - Compress our file
 - Consistent Hashing
 - Code Splitting
-- Differential Bundling - a support for older browsers
+- Differential Bundling - A support for older browsers
 - Diagnostic
 - Error Handling Suggestions
 - HTTPs support
-- Tree shaking - remove unused code
+- Tree shaking - Removes unused code
 - Different dev and prod bundles
