@@ -17,7 +17,7 @@ const RestaurantCategory = ({ data, expand, setShowIndex }) => {
         </div>
         <div
           className={`text-lg font-bold pt-2 transition-transform duration-300 ${
-            expand ? "rotate-180" : ""
+            expand ? "" : "rotate-180"
           }`}
         >
           ⌃
