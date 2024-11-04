@@ -3,14 +3,14 @@ import { RATING_ICON_URL, AVG_RATING_ICON_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
   const {
-    name,
-    cuisines,
-    avgRating,
-    sla,
-    cloudinaryImageId,
-    areaName,
-    aggregatedDiscountInfoV3,
-  } = resData?.info;
+    name = "",
+    cuisines = [],
+    avgRating = 0,
+    sla = {},
+    cloudinaryImageId = "",
+    areaName = "",
+    aggregatedDiscountInfoV3 = {},
+  } = resData?.info || {};
   return (
     <div className="res-card">
       <div className="res-img-card">
@@ -42,7 +42,7 @@ const RestaurantCard = ({ resData }) => {
                     borderRadius: "50%",
                   }}
                   src={avgRating >= 3 ? RATING_ICON_URL : AVG_RATING_ICON_URL}
-                ></img>{" "}
+                ></img>
                 <div>{avgRating}</div>
               </h5>
               <h5>

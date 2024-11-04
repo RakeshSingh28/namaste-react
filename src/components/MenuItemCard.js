@@ -12,7 +12,7 @@ class MenuItemCard extends Component {
     const { name, price, rating, description, img } = this.props.itemInfo;
 
     return (
-      <div className="item-card">
+      <div className="item-card bg-gray-50 shadow-lg mt-1">
         <div className="item-detail">
           <h3>{name}</h3>
           <b className="mb-2">₹ {price}</b>

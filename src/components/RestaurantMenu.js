@@ -6,9 +6,11 @@ import {
   AVG_RATING_ICON_URL,
 } from "../utils/constants";
 import Shimmer from "./Shimmer";
-import MenuItemCard from "./MenuItemCard";
+import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
+  const [showIndex, setShowIndex] = useState(null);
   const { id } = useParams();
   const resMenu = useRestaurantMenu(id);
 
@@ -24,15 +26,12 @@ const RestaurantMenu = () => {
     cloudinaryImageId,
     totalRatings,
   } = resMenu?.cards?.[2]?.card?.card?.info;
-  const itemCards =
-    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-      ?.itemCards ||
-    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-      ?.itemCards ||
-    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card
-      ?.itemCards ||
-    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[10]?.card?.card
-      ?.itemCards;
+  const categories =
+    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
   return (
     <div className="menu card-info">
@@ -51,11 +50,11 @@ const RestaurantMenu = () => {
                       borderRadius: "50%",
                     }}
                     src={avgRating >= 3 ? RATING_ICON_URL : AVG_RATING_ICON_URL}
-                  ></img>{" "}
+                  ></img>
                   {avgRating} (
                   {Math.floor(totalRatings / 1000) === 0
-                    ? totalRatings
-                    : `${Math.floor(totalRatings / 1000)}K+`}{" "}
+                    ? `${totalRatings} `
+                    : `${Math.floor(totalRatings / 1000)}K+ `}
                   ratings)
                 </h4>
                 <h4>
@@ -81,22 +80,15 @@ const RestaurantMenu = () => {
         </div>
       </div>
       <h3 className="flex justify-center mt-5"> ~~~ MENU ~~~ </h3>
-      <ul>
-        {itemCards?.map((item) => (
-          <MenuItemCard
-            key={item?.card?.info?.id}
-            itemInfo={{
-              name: item?.card?.info?.name,
-              price:
-                (item?.card?.info?.price || item?.card?.info?.defaultPrice) /
-                100,
-              rating: item?.card?.info?.ratings?.aggregatedRating,
-              description: item?.card?.info?.description,
-              img: item?.card?.info?.imageId,
-            }}
-          />
-        ))}
-      </ul>
+      {categories.map((category, idx) => (
+        //Controlled Component
+        <RestaurantCategory
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+          expand={idx === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(idx)}
+        />
+      ))}
     </div>
   );
 };
