@@ -1,6 +1,9 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import { RATING_ICON_URL, AVG_RATING_ICON_URL } from "../utils/constants";
 import "./MenuItemCard.css";
+import UserContext from "../utils/userContext";
+import { addItem, removeItem } from "../utils/cartSlice";
 
 class MenuItemCard extends Component {
   constructor(props) {
@@ -8,11 +11,20 @@ class MenuItemCard extends Component {
     this.state = { count: 0 };
   }
 
+  handleAddItem = (item) => {
+    this.setState({ count: this.state.count + 1 });
+    this.props.dispatch(addItem(item));
+  };
+  handleRemoveItem = (item) => {
+    this.setState({ count: this.state.count - 1 });
+    this.props.dispatch(removeItem());
+  };
+
   render() {
     const { name, price, rating, description, img } = this.props.itemInfo;
 
     return (
-      <div className="item-card bg-gray-50 shadow-lg mt-1">
+      <div className="item-card bg-gray-50 shadow-lg mt-1 rounded-lg">
         <div className="item-detail">
           <h3>{name}</h3>
           <b className="mb-2">₹ {price}</b>
@@ -28,49 +40,45 @@ class MenuItemCard extends Component {
                 src={
                   rating?.rating >= 3 ? RATING_ICON_URL : AVG_RATING_ICON_URL
                 }
+                alt="Rating icon"
               />
               {rating.rating} ({rating.ratingCountV2})
             </h5>
           )}
           <div className="mb-2">{description}</div>
-          {this.state.count == 0 && (
+          {this.state.count === 0 ? (
             <button
-              className="add-btn"
-              onClick={() => {
-                this.setState({ count: this.state.count + 1 });
-              }}
+              className="add-btn cursor-pointer"
+              onClick={() => this.handleAddItem(this.props.itemInfo)}
             >
-              {this.state.count == 0 && <b>ADD</b>}
+              <b>ADD</b>
             </button>
-          )}
-          {this.state.count > 0 && (
-            <button className="add-btn">
+          ) : (
+            <button className="add-btn cursor-default">
               <div
                 className="sub-btn"
-                onClick={() => {
-                  this.setState({ count: this.state.count - 1 });
-                }}
+                onClick={() => this.handleRemoveItem(this.props.itemInfo)}
               >
-                <b> – </b>
+                <b>–</b>
               </div>
-              {this.state.count > 0 && (
-                <b style={{ margin: "0px 24px" }}>{this.state.count}</b>
-              )}
+              <b style={{ margin: "0px 24px" }}>{this.state.count}</b>
               <div
                 className="more-btn"
-                onClick={() => {
-                  this.setState({ count: this.state.count + 1 });
-                }}
+                onClick={() => this.handleAddItem(this.props.itemInfo)}
               >
-                <b> + </b>
+                <b>+</b>
               </div>
             </button>
           )}
+          <UserContext.Consumer>
+            {({ loggedInUser }) => <div>{loggedInUser}</div>}
+          </UserContext.Consumer>
         </div>
         {img && (
           <img
             className="item-img"
             src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${img}`}
+            alt="Item"
           />
         )}
       </div>
@@ -78,4 +86,4 @@ class MenuItemCard extends Component {
   }
 }
 
-export default MenuItemCard;
+export default connect()(MenuItemCard);
