@@ -24,7 +24,6 @@ const Header = () => {
 
       <div className="navItems">
         <ul>
-          <li>Online Status: {internetStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link
               to="/about"
@@ -61,7 +60,13 @@ const Header = () => {
           >
             {btnName}
           </button>
-          <li style={{ paddingTop: "10px" }}>{loggedInUser}</li>
+          <div className="bg-gray-300 rounded-3xl py-2 px-3 mr-2">
+            {loggedInUser.split(" ")[0].slice(0, 1) +
+              loggedInUser.split(" ")[1].slice(0, 1)}
+          </div>
+          <div className="absolute right-1 top-2">
+            {internetStatus ? "🟢" : "🔴"}
+          </div>
         </ul>
       </div>
     </div>
