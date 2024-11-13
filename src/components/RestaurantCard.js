@@ -1,11 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 import { RATING_ICON_URL, AVG_RATING_ICON_URL } from "../utils/constants";
-import UserContext from "../utils/userContext";
-import { useContext } from "react";
 
 const RestaurantCard = ({ resData }) => {
-  const { loggedInUser } = useContext(UserContext);
-
   const {
     name = "",
     cuisines = [],
@@ -59,7 +55,6 @@ const RestaurantCard = ({ resData }) => {
           {!avgRating && <h5>{sla.slaString}</h5>}
         </div>
         <h5>{areaName}</h5>
-        <div>{loggedInUser}</div>
       </div>
     </div>
   );

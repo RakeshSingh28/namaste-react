@@ -1,16 +1,13 @@
 import RestaurantCard, { RestaurantCardPromoted } from "./RestaurantCard";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useBody from "../utils/useBody";
 import useInternetStatus from "../utils/useInternetStatus";
-import UserContext from "../utils/userContext";
 
 const Body = () => {
   const [searchVal, changeSearchVal] = useState("");
   const [searchedValue, setSearchedValue] = useState("");
-  const [userName, setUserName] = useState("");
-  const { loggedInUser, setName } = useContext(UserContext);
   const [restaurantData, resData, changeState, dataLoading] = useBody();
   const internetStatus = useInternetStatus();
   const RestaurantCardWithLabel = RestaurantCardPromoted(RestaurantCard);
@@ -36,7 +33,7 @@ const Body = () => {
   //Conditional Rendering
   if (resData.length === 0 && !dataLoading)
     return (
-      <div className="body ">
+      <div className="body">
         <form role="search" className="search">
           <input
             type="search"
@@ -93,7 +90,7 @@ const Body = () => {
   return resData.length === 0 && dataLoading ? (
     <Shimmer />
   ) : (
-    <div className="body ">
+    <div className="body">
       <form role="search" className="search">
         <input
           type="search"
@@ -151,19 +148,8 @@ const Body = () => {
             );
           }}
         >
-          Top Rated Restaurnts
+          Top Rated Restaurants
         </button>
-        <div className="flex items-center">
-          <label className="px-2">UserName: </label>
-          <input
-            className="border-black border p-2 rounded-md"
-            value={loggedInUser}
-            onChange={(e) => {
-              setUserName(e.target.value);
-              setName(e.target.value);
-            }}
-          ></input>
-        </div>
       </form>
       <div className="res-container">
         {resData.map((restaurant, idx) => (
