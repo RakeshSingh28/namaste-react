@@ -15,14 +15,12 @@ const AppContainer = () => {
 
   return (
     <Provider store={appStore}>
-      <UserContext.Provider value={{ loggedInUser: userName, setName }}>
-        <div>
-          <UserContext.Provider value={{ loggedInUser: userName }}>
-            <Header />
-          </UserContext.Provider>
-          <Outlet />
-        </div>
-      </UserContext.Provider>
+      <div>
+        <UserContext.Provider value={{ loggedInUser: userName }}>
+          <Header />
+        </UserContext.Provider>
+        <Outlet />
+      </div>
     </Provider>
   );
 };

@@ -18,7 +18,7 @@ const Header = () => {
     <div className="header">
       <div>
         <Link to="">
-          <img className="logo" src={APP_LOGO_URL} />
+          <img className="logo" alt="app-logo" src={APP_LOGO_URL} />
         </Link>
       </div>
 
@@ -45,6 +45,7 @@ const Header = () => {
             <Link to="/cart" className="flex flex-nowrap">
               <img
                 style={{ height: "60px", width: "40px", display: "flex" }}
+                alt="shopping-cart"
                 src="https://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg"
               />
               <div className="flex items-center p-2 rounded-3xl bg-orange-600 text-white h-7">

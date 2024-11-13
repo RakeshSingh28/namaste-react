@@ -35,3 +35,16 @@
 - Unit Testing
 - Integration Testing
 - End to End Testing - e2e testing
+
+# Setting up Testing in our app
+
+- Install React Testing Library
+- Install Jest
+- Install Babel dependencies to use jest
+- Configure Babel
+- Configure Parcel Config file to disable default Babel transpilation
+- Jest Configuration - npx jest --init
+- Install jsdom library - jest-environment-jsdom
+- Install @babel/preset-react - to make JSX work in test case environment
+- Include @babel/preset-react inside my babel config
+- Install @testing-library/jest-dom

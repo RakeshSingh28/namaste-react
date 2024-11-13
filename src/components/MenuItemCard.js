@@ -2,7 +2,6 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { RATING_ICON_URL, AVG_RATING_ICON_URL } from "../utils/constants";
 import "./MenuItemCard.css";
-import UserContext from "../utils/userContext";
 import { addItem, removeItem } from "../utils/cartSlice";
 
 class MenuItemCard extends Component {
@@ -70,9 +69,6 @@ class MenuItemCard extends Component {
               </div>
             </button>
           )}
-          <UserContext.Consumer>
-            {({ loggedInUser }) => <div>{loggedInUser}</div>}
-          </UserContext.Consumer>
         </div>
         {img && (
           <img
